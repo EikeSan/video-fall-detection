@@ -1,10 +1,17 @@
 import cv2
+import time
+import numpy as np 
 
 video_src = 'fall.mp4'
 
 cap = cv2.VideoCapture(video_src)
 fgbg = cv2.createBackgroundSubtractorMOG2()
-bike_cascade = cv2.CascadeClassifier('./haarcascades/haarcascade_fullbody.xml')
+fullbody_cascade = cv2.CascadeClassifier('./haarcascades/haarcascade_fullbody.xml')
+
+i = 0
+lastH = [0]*100
+lastW = [0]*100
+
 
 while True:
     ret, img = cap.read()
@@ -14,10 +21,12 @@ while True:
         break
     
     gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
-    bike = bike_cascade.detectMultiScale(gray,1.3,2)
+    person = fullbody_cascade.detectMultiScale(gray,1.08,2)
 
-    for(a,b,c,d) in bike:
-        cv2.rectangle(img,(a,b),(a+c,b+d),(0,255,210),4)
+    for(x, y, w, h) in person:
+        cv2.rectangle(img,(x,y),(x+w,y+h),(0,255,0),2)
+
+        
     
     cv2.imshow('video', img)
     
