@@ -25,7 +25,7 @@ def draw_detections(img, rects, thickness = 1):
 
 # define video capture object
 
-cap = cv2.VideoCapture('./cell.mp4');
+cap = cv2.VideoCapture('./queda.mp4');
 
 # define display window name
 
@@ -55,7 +55,7 @@ if (cap.isOpened()):
 
         # perform HOG based pedestrain detection
 
-        found, w = hog.detectMultiScale(img, winStride=(8,8), padding=(128,32), scale=1.09)
+        found, w = hog.detectMultiScale(img, winStride=(8,8), padding=(128,32), scale=2)
         found_filtered = []
 
         for ri, r in enumerate(found):
