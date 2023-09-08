@@ -47,7 +47,7 @@ while(1):
 
             if j > 10:
                 print("FALL" + str(j))
-                cv2.putText(fgmask, 'FALL', (x, y), cv2.FONT_HERSHEY_TRIPLEX, 0.5, (255,255,255), 2)
+                cv2.putText(frame, 'Fall Detected', (x-5, y-5), cv2.FONT_HERSHEY_TRIPLEX, 1.0, (255, 255, 255), 3)
                 cv2.rectangle(frame,(x,y),(x+w,y+h),(0,0,255),2)
 
             if h > w:
