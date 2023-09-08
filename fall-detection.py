@@ -40,13 +40,13 @@ while(1):
 
             x, y, w, h = cv2.boundingRect(cnt)
 
-            cv2.drawContours(fgmask, [cnt], 0, (255,255,255), 3, maxLevel = 0)
+            cv2.drawContours(fgmask, [cnt], 0, (255, 255, 255), 3, maxLevel=0)
 
             if h < w:
-                j += 1
+                j += 2
 
-            if j > 10:
-                print("FALL" + str(j))
+            if j > 13:
+                #print("FALL" + str(j))
                 cv2.putText(frame, 'Fall Detected', (x-7, y-7), cv2.FONT_HERSHEY_TRIPLEX, 1.0, (255, 255, 255), 3)
                 cv2.rectangle(frame,(x,y),(x+w,y+h),(0,0,255),2)
 
